@@ -53,4 +53,16 @@ class MyTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData()
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        AppData.selectedButton = selectedScope
+        if selectedScope == 0 {
+            searchItems.placeholder = "Search Product"
+        } else {
+            searchItems.placeholder = "Maximum Calories"
+        }
+        searchItems.text = ""
+        AppData.filterData(search: "")
+        tableView.reloadData()
+    }
 }
